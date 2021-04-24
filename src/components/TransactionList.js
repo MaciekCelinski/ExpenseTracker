@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 
-function TransactionList() {
+import { GlobalContext } from "../context/GobalState";
+
+export const TransactionList = () => {
+	const context = useContext(GlobalContext);
+
+
 	return (
 		<>
 			<h3>History</h3>
@@ -12,6 +17,4 @@ function TransactionList() {
 			</ul>
 		</>
 	);
-}
-
-export default TransactionList;
+};

@@ -28,6 +28,7 @@ function AddTransaction() {
 						placeholder="Enter amount..."
 					/>
 				</div>
+				<button className="btn">Add transaction</button>
 			</form>
 		</>
 	);
