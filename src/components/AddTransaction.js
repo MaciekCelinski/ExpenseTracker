@@ -1,8 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { GlobalContext } from "../context/GobalState";
 
 function AddTransaction() {
+	const { transactions, addTransaction } = useContext(GlobalContext);
+
 	const [text, setText] = useState("");
-	const [amount, setAmount] = useState("");
+	const [amount, setAmount] = useState(0);
+
+	const onSubmit = (e) => {
+		e.preventDefault();
+
+		const newTransaction = {
+			id: transactions.length + 1,
+			text,
+			amount: +amount,
+		};
+
+		addTransaction(newTransaction);
+	};
 
 	return (
 		<>
@@ -28,7 +43,9 @@ function AddTransaction() {
 						placeholder="Enter amount..."
 					/>
 				</div>
-				<button className="btn">Add transaction</button>
+				<button className="btn" onClick={onSubmit}>
+					Add transaction
+				</button>
 			</form>
 		</>
 	);
